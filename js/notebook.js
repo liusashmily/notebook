@@ -3,7 +3,7 @@
   
   'use strict';
 
-  var app = angular.module('formlyExample', ['formly', 'formlyBootstrap'], function config(formlyConfigProvider) {
+  var app = angular.module('notebook', ['formly', 'formlyBootstrap'], function config(formlyConfigProvider) {
     // set templates here
     formlyConfigProvider.setType({
       name: 'custom',
@@ -11,25 +11,20 @@
     });
   });
   
-
   app.controller('MainCtrl', function MainCtrl(formlyVersion) {
     var vm = this;
     // funcation assignment
     vm.onSubmit = onSubmit;
 
     // variable assignment
-    vm.author = { // optionally fill in your info below :-)
-      name: 'Kent C. Dodds',
-      url: 'https://twitter.com/kentcdodds' // a link to your twitter/github/blog/whatever
-    };
-    vm.exampleTitle = 'Introduction';
+    vm.exampleTitle = 'Notebook';
     vm.env = {
       angularVersion: angular.version.full,
       formlyVersion: formlyVersion
     };
 
     vm.model = {
-      awesome: true
+      ready: true
     };
     
     vm.awesomeIsForced = false;
@@ -39,20 +34,34 @@
         key: 'text',
         type: 'input',
         templateOptions: {
-          label: 'Text',
-          placeholder: 'Formly is terrific!'
+          label: 'Name',
+          placeholder: 'Input the alien or planet name here. For example: Akona, Charon, etc.'
         }
       },
       {
         key: 'story',
         type: 'textarea',
         templateOptions: {
-          label: 'Some sweet story',
-          placeholder: 'It allows you to build and maintain your forms with the ease of JavaScript :-)'
+          label: 'Atomsphere',
+          placeholder: 'Type what you found about Atomsphere here.'
         }
       },
       {
-        key: 'awesome',
+        key: 'custom',
+        type: 'custom',
+        templateOptions: {
+          label: 'Gravity',
+        }
+      },
+      {
+        key: 'exampleDirective',
+        template: '<div example-directive></div>',
+        templateOptions: {
+          label: 'Notes',
+        }
+      },
+      {
+        key: 'ready',
         type: 'checkbox',
         templateOptions: { label: '' },
         expressionProperties: {
@@ -63,7 +72,7 @@
             if (vm.awesomeIsForced) {
               return 'Too bad, formly is really awesome...';
             } else {
-              return 'Is formly totally awesome? (uncheck this and see what happens)';
+              return 'Are you ready to submit your answer? (uncheck this and see what happens)';
             }
           }
         }
@@ -74,7 +83,7 @@
         expressionProperties: {
           'templateOptions.disabled': 'false'
         },
-        hideExpression: 'model.awesome',
+        hideExpression: 'model.ready',
         templateOptions: {
           label: 'Why Not?',
           placeholder: 'Type in here... I dare you'
@@ -84,7 +93,7 @@
             if (newValue) {
               console.log(newValue);
               stopWatching();
-              scope.model.awesome = true;
+              scope.model.ready = true;
               scope.model.whyNot = undefined;
               field.expressionProperties.hide = null;
               field.expressionProperties['templateOptions.disabled'] = 'true';
@@ -92,20 +101,6 @@
               vm.awesomeIsForced = true;
             }
           }
-        }
-      },
-      {
-        key: 'custom',
-        type: 'custom',
-        templateOptions: {
-          label: 'Custom inlined',
-        }
-      },
-      {
-        key: 'exampleDirective',
-        template: '<div example-directive></div>',
-        templateOptions: {
-          label: 'Example Directive',
         }
       }
     ];
