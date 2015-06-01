@@ -3,7 +3,7 @@
   
   'use strict';
 
-  var app = angular.module('notebook', ['formly', 'formlyBootstrap'], function config(formlyConfigProvider) {
+  var app = angular.module('notebook', ['formly', 'formlyFoundation'], function config(formlyConfigProvider) {
     // set templates here
     formlyConfigProvider.setType({
       name: 'custom',
@@ -44,6 +44,14 @@
         templateOptions: {
           label: 'Atomsphere',
           placeholder: 'Type what you found about Atomsphere here.'
+        }
+      },
+      {
+        key: 'temperature',
+        type: 'input',
+        templateOptions: {
+          label: 'Temperature',
+          placeholder: 'Input the temperature you found.'
         }
       },
       {

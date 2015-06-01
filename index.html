@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <meta name="robots" content="noindex">
 <html>
-
   <head>
     <!-- Twitter bootstrap -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/foundation.min.css">
     <link rel="stylesheet" type="text/css" href="css/app.css"> 
     <!-- apiCheck is used by formly to validate its api -->
     <script src="http://rawgit.com/kentcdodds/apiCheck.js/master/dist/api-check.min.js"></script>
@@ -13,9 +12,8 @@
     <!-- This is the current state of master for formly core. -->
     <script src="http://rawgit.com/formly-js/angular-formly/master/dist/formly.js"></script>
     <!-- This is the current state of master for the bootstrap templates -->
-    <script src="http://rawgit.com/formly-js/angular-formly-templates-bootstrap/master/dist/angular-formly-templates-bootstrap.js"></script>
+    <script src="https://rawgit.com/formly-js/angular-formly-templates-foundation/master/dist/angular-formly-templates-foundation.js"></script>
     <script src="js/notebook.js"></script>
-
     <title>Notebook Test</title>
   </head>
 
@@ -47,7 +45,5 @@
         <input id="{{::id}}" name="{{::id}}" class="form-control" ng-model="model[options.key]" />
       </div>
     </script>
-
-</body>
-
+  </body>
 </html>
