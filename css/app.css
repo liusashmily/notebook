@@ -5,3 +5,16 @@ body {
 .formly-field {
   margin-bottom:16px;
 }
+
+label {
+	width: 100px;
+    text-align: left;
+    clear: both;
+    float: left;
+    margin-right:15px;
+}
+
+
+input[type="text"], textarea {
+	width: 50%;
+}

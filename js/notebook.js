@@ -80,7 +80,7 @@
             if (vm.awesomeIsForced) {
               return 'Too bad, formly is really awesome...';
             } else {
-              return 'Are you ready to submit your answer? (uncheck this and see what happens)';
+              return 'Finish ? (uncheck this and see what happens)';
             }
           }
         }
