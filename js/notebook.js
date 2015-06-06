@@ -3,7 +3,7 @@
   
   'use strict';
 
-  var app = angular.module('notebook', ['formly', 'formlyFoundation'], function config(formlyConfigProvider) {
+  var app = angular.module('arTools', ['ngRoute', 'formly', 'formlyFoundation'], function config(formlyConfigProvider) {
     // set templates here
     formlyConfigProvider.setType({
       name: 'custom',
@@ -11,6 +11,13 @@
     });
   });
   
+  app.config(["$routeProvider", function($routeProvider) {
+    $routeProvider.
+      when('/period', {
+        templateUrl: 'views/period.html'
+      });
+  }]);
+
   app.controller('MainCtrl', function MainCtrl(formlyVersion) {
     var vm = this;
     // funcation assignment

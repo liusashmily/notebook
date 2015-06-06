@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta name="robots" content="noindex">
-<html>
+<html ng-app="arTools">
   <head>
     <!-- Twitter bootstrap -->
 
@@ -14,16 +14,19 @@
     <script src="http://rawgit.com/formly-js/angular-formly/master/dist/formly.js"></script>
     <!-- This is the current state of master for the bootstrap templates -->
     <script src="https://rawgit.com/formly-js/angular-formly-templates-foundation/master/dist/angular-formly-templates-foundation.js"></script>
-    <script src="js/notebook.js"></script>
     <script src="js/lib/angular/angular-route.min.js"></script>
     <script src="js/lib/angular/angular-animate.min.js"></script>
+    <script src="js/notebook.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/app.css"> 
     <title>Notebook Test</title>
   </head>
 
-  <body ng-app="notebook" ng-controller="MainCtrl as vm">
+  <body ng-controller="MainCtrl as vm">
     <div class="tools" ng-include="'views/nav.html'"> </div>
+    <div class="page">
+      <main ng-view></main>
+    </div>
 
     <div>
       <h2>{{::vm.exampleTitle}}</h2>
