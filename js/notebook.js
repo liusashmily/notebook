@@ -15,6 +15,17 @@
     $routeProvider.
       when('/period', {
         templateUrl: 'views/period.html'
+      }).
+      when('/notebook', {
+        templateUrl: 'views/notebook.html'
+      }).
+      when('/solar', {
+        templateUrl: 'views/solar.html'
+      }).
+      when('/concepts', {
+        templateUrl: 'views/concepts.html'
+      }).otherwise({
+        redirectTo: '/index.html'
       });
   }]);
 

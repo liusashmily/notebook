@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html ng-app="arTools">
+  <body >
+    <div>
+      <h2>{{::vm.exampleTitle}}</h2>
+      <div>
+        Input notes here.
+      </div>
+      <form ng-submit="vm.onSubmit()" novalidate>
+        <formly-form model="vm.model" fields="vm.formFields">
+          <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </formly-form>
+      </form>
+      <h3>Input Data</h3>
+      <pre>{{vm.model | json}}</pre>
+    </div>
+
+    <!-- Put custom templates here -->
+    <script type="text/ng-template" id="custom.html">
+      <div class="form-group">
+        <label for="{{::id}}">{{options.templateOptions.label}}</label>
+        <input id="{{::id}}" name="{{::id}}" class="form-control" ng-model="model[options.key]" />
+      </div>
+    </script>
+    <script type="text/ng-template" id="example-directive.html">
+      <div class="form-group">
+        <label for="{{::id}}">{{options.templateOptions.label}}</label>
+        <input id="{{::id}}" name="{{::id}}" class="form-control" ng-model="model[options.key]" />
+      </div>
+    </script>
+  </body>
+</html>
