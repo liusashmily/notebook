@@ -3,7 +3,7 @@
   
   'use strict';
 
-  var app = angular.module('arTools', ['ngRoute', 'formly', 'formlyFoundation'], function config(formlyConfigProvider) {
+  var app = angular.module('arTools', ['ngRoute', 'firebase', 'formly', 'formlyFoundation'], function config(formlyConfigProvider) {
     // set templates here
     formlyConfigProvider.setType({
       name: 'custom',
@@ -29,7 +29,11 @@
       });
   }]);
 
-  app.controller('MainCtrl', function MainCtrl(formlyVersion) {
+  app.controller('MainCtrl', function MainCtrl($scope, $firebaseObject, formlyVersion) {
+    var ref = new Firebase("https://arnotebook.firebaseio.com/");
+    // download the data into a local object
+    $scope.data = $firebaseObject(ref);
+
     var vm = this;
     // funcation assignment
     vm.onSubmit = onSubmit;
