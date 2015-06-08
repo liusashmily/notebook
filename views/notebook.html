@@ -8,8 +8,8 @@
         Input notes here.
       </div>
       <form ng-submit="vm.onSubmit()" novalidate>
-        <formly-form model="vm.model" fields="vm.formFields">
-          <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        <formly-form model="vm.model" fields="vm.formFields" form="vm.notebookForm">
+          <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.notebookForm.$invalid">Submit</button>
         </formly-form>
       </form>
       <h3>Input Data</h3>

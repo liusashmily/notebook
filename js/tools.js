@@ -9,6 +9,8 @@
       name: 'custom',
       templateUrl: 'custom.html'
     });
+
+
   });
   
   app.config(["$routeProvider", function($routeProvider) {
@@ -28,6 +30,10 @@
         redirectTo: '/index.html'
       });
   }]);
+
+  app.run(function run(formlyValidationMessages) {
+    formlyValidationMessages.addStringMessage('required', 'This field is required');
+  });
 
   app.controller('MainCtrl', function MainCtrl($scope, $firebaseObject, formlyVersion) {
     var ref = new Firebase("https://arnotebook.firebaseio.com/");
@@ -53,15 +59,19 @@
 
     vm.formFields = [
       {
-        key: 'text',
+        key: 'name',
         type: 'input',
         templateOptions: {
           label: 'Name',
-          placeholder: 'Input the alien or planet name here. For example: Akona, Charon, etc.'
+          placeholder: 'Input the alien or planet name here. For example: Akona, Charon, etc.',
+          required: true
+        },
+        validation: {
+          show: true
         }
       },
       {
-        key: 'story',
+        key: 'atomsphere',
         type: 'textarea',
         templateOptions: {
           label: 'Atomsphere',
