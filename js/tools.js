@@ -10,9 +10,25 @@
       templateUrl: 'custom.html'
     });
 
+    // formlyConfigProvider
+    formlyConfigProvider.setWrapper([
+      {
+        template: [
+          '<formly-transclude></formly-transclude>',
+          '<div class="validation"',
+          '  ng-if="showError"',
+          '  ng-messages="fc.$error">',
+          '  <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
+          '    {{message(fc.$viewValue, fc.$modelValue, this)}}',
+          '  </div>',
+          '</div>'
+        ].join(' ')
+      }
+    ]);
 
   });
   
+
   app.config(["$routeProvider", function($routeProvider) {
     $routeProvider.
       when('/period', {
@@ -50,12 +66,6 @@
       angularVersion: angular.version.full,
       formlyVersion: formlyVersion
     };
-
-    vm.model = {
-      ready: true
-    };
-    
-    vm.awesomeIsForced = false;
 
     vm.formFields = [
       {
@@ -98,49 +108,6 @@
         template: '<div example-directive></div>',
         templateOptions: {
           label: 'Notes',
-        }
-      },
-      {
-        key: 'ready',
-        type: 'checkbox',
-        templateOptions: { label: '' },
-        expressionProperties: {
-          'templateOptions.disabled': function() {
-            return vm.awesomeIsForced;
-          },
-          'templateOptions.label': function() {
-            if (vm.awesomeIsForced) {
-              return 'Too bad, formly is really awesome...';
-            } else {
-              return 'Finish ? (uncheck this and see what happens)';
-            }
-          }
-        }
-      },
-      {
-        key: 'whyNot',
-        type: 'textarea',
-        expressionProperties: {
-          'templateOptions.disabled': 'false'
-        },
-        hideExpression: 'model.ready',
-        templateOptions: {
-          label: 'Why Not?',
-          placeholder: 'Type in here... I dare you'
-        },
-        watcher: {
-          listener: function(field, newValue, oldValue, scope, stopWatching) {
-            if (newValue) {
-              console.log(newValue);
-              stopWatching();
-              scope.model.ready = true;
-              scope.model.whyNot = undefined;
-              field.expressionProperties.hide = null;
-              field.expressionProperties['templateOptions.disabled'] = 'true';
-              field.templateOptions.placeholder = 'Too bad... It really is awesome!  Wasn\'t that cool?';
-              vm.awesomeIsForced = true;
-            }
-          }
         }
       }
     ];

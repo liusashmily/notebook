@@ -16,18 +16,5 @@
       <pre>{{vm.model | json}}</pre>
     </div>
 
-    <!-- Put custom templates here -->
-    <script type="text/ng-template" id="custom.html">
-      <div class="form-group">
-        <label for="{{::id}}">{{options.templateOptions.label}}</label>
-        <input id="{{::id}}" name="{{::id}}" class="form-control" ng-model="model[options.key]" />
-      </div>
-    </script>
-    <script type="text/ng-template" id="example-directive.html">
-      <div class="form-group">
-        <label for="{{::id}}">{{options.templateOptions.label}}</label>
-        <input id="{{::id}}" name="{{::id}}" class="form-control" ng-model="model[options.key]" />
-      </div>
-    </script>
   </body>
 </html>
