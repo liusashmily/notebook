@@ -59,6 +59,7 @@
     var vm = this;
     // funcation assignment
     vm.onSubmit = onSubmit;
+    ref.push({name:name, atomsphere:atomsphere, temperature:temperature});
 
     // variable assignment
     vm.exampleTitle = 'Notebook';
@@ -95,33 +96,17 @@
           label: 'Temperature',
           placeholder: 'Input the temperature you found.'
         }
-      },
-      {
-        key: 'custom',
-        type: 'custom',
-        templateOptions: {
-          label: 'Gravity',
-        }
-      },
-      {
-        key: 'exampleDirective',
-        template: '<div example-directive></div>',
-        templateOptions: {
-          label: 'Notes',
-        }
       }
     ];
 
     // function definition
     function onSubmit() {
       alert(JSON.stringify(vm.model), null, 2);
+     // ref.push({name:name, atomsphere:atomsphere, temperature:temperature});
     }
+
+
   });
 
-  
-  app.directive('exampleDirective', function() {
-    return {
-      templateUrl: 'example-directive.html'
-    };
-  });
+
 })();
