@@ -90,11 +90,43 @@
         }
       },
       {
+        key: 'gravity',
+        type: 'textarea',
+        templateOptions: {
+          label: 'Gravity',
+          placeholder: 'Type what you found about Gravity here.'
+        }
+      },
+      {
+        key: 'magnetism',
+        type: 'textarea',
+        templateOptions: {
+          label: 'Magnetism',
+          placeholder: 'Type what you found about Magnetism here.'
+        }
+      },
+      {
+        key: 'surface',
+        type: 'textarea',
+        templateOptions: {
+          label: 'Surface',
+          placeholder: 'Type what you found about Surface here.'
+        }
+      },
+      {
         key: 'temperature',
         type: 'input',
         templateOptions: {
           label: 'Temperature',
           placeholder: 'Input the temperature you found.'
+        }
+      },
+      {
+        key: 'notes',
+        type: 'textarea',
+        templateOptions: {
+          label: 'Notes',
+          placeholder: 'Type any other notes here.'
         }
       }
     ];
