@@ -50,12 +50,21 @@
     formlyValidationMessages.addStringMessage('required', 'This field is required');
   });
 
-  app.controller('MainCtrl', function MainCtrl($scope, $firebaseObject, formlyVersion) {
+  app.controller('MainCtrl', function MainCtrl($scope, $firebaseArray, formlyVersion) {
     var ref = new Firebase("https://arnotebook.firebaseio.com/");
     //var ref = new Firebase("https://lisaso.firebaseio-demo.com/");
 
-    // download the data into a local object
-    $scope.data = $firebaseObject(ref);
+    $scope.notes = $firebaseArray(ref);
+
+
+    // Attach an asynchronous callback to read the data at the notes reference
+    ref.on("child_added", function(snapshot) {
+      var newNote = snapshot.val();
+      console.log("Name:" + newNote.name);
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+ 
 
     var vm = this;
     // funcation assignment
