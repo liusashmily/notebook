@@ -27,7 +27,6 @@
     ]);
 
   });
-  
 
   app.config(["$routeProvider", function($routeProvider) {
     $routeProvider.
@@ -53,13 +52,14 @@
 
   app.controller('MainCtrl', function MainCtrl($scope, $firebaseObject, formlyVersion) {
     var ref = new Firebase("https://arnotebook.firebaseio.com/");
+    //var ref = new Firebase("https://lisaso.firebaseio-demo.com/");
+
     // download the data into a local object
     $scope.data = $firebaseObject(ref);
 
     var vm = this;
     // funcation assignment
     vm.onSubmit = onSubmit;
-    ref.push({name:name, atomsphere:atomsphere, temperature:temperature});
 
     // variable assignment
     vm.exampleTitle = 'Notebook';
@@ -102,7 +102,8 @@
     // function definition
     function onSubmit() {
       alert(JSON.stringify(vm.model), null, 2);
-     // ref.push({name:name, atomsphere:atomsphere, temperature:temperature});
+      //ref.push({name:name, atomsphere:atomsphere, temperature:temperature});
+      ref.push(vm.model);
     }
 
 
